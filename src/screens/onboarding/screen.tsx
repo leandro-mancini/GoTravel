@@ -12,7 +12,7 @@ export const OnboardingScreen = () => {
   const styles = createStyles(theme);
   const scale = useRef(new Animated.Value(1.2)).current;
 
-  const { user, login, logout, isLoggedIn } = useAuth();
+  const { login } = useAuth();
 
   useEffect(() => {
     Animated.timing(scale, {
@@ -24,7 +24,6 @@ export const OnboardingScreen = () => {
 
   return (
     <View style={styles.wrapper}>
-      {/* Background animado separado */}
       <AnimatedFadeView animation="fadeIn" style={[styles.background]}>
         <AnimatedImageBackground
           source={require("../../../assets/images/bg-onboarding.png")}
@@ -33,7 +32,6 @@ export const OnboardingScreen = () => {
         />
       </AnimatedFadeView>
 
-      {/* Conteúdo sobre o fundo */}
       <View style={styles.container}>
         <View style={styles.hello}>
           <AnimatedFadeView animation="fadeInUp">

@@ -1,6 +1,3 @@
-// import { useAuthStore } from '@/store/authStore';
-// import { signInWithGoogle, signOutGoogle } from '@/services/auth';
-
 import { signInWithGoogle, signOutGoogle } from "../services";
 import { useAuthStore } from "../store";
 
