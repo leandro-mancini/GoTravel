@@ -7,7 +7,7 @@ import { useAuthFacebook, useAuthGoogle } from '../../hooks';
 
 const AnimatedImageBackground = Animated.createAnimatedComponent(ImageBackground)
 
-export const OnboardingScreen = () => {
+export const OnboardingScreen = ({ navigation }: any) => {
   const theme = useTheme();
   const styles = createStyles(theme);
   const scale = useRef(new Animated.Value(1.2)).current;
@@ -47,12 +47,12 @@ export const OnboardingScreen = () => {
           
         <View style={styles.buttons}>
           <AnimatedFadeView animation="fadeInUp" delay={600}>
-            <Button variant="outline" label="Continuar com o Google" onPress={() => {}}>
+            <Button variant="outline" label="Continuar com o Google" onPress={() => navigation.replace("Main")}>
               <Icon name="Google" size={20} />
             </Button>
           </AnimatedFadeView>
           <AnimatedFadeView animation="fadeInUp" delay={900}>
-            <Button variant="outline" label="Continuar com o Facebook" onPress={() => {}}>
+            <Button variant="outline" label="Continuar com o Facebook" onPress={() => navigation.replace("Main")}>
               <Icon name="Facebook" size={20} />
             </Button>
           </AnimatedFadeView>

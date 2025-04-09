@@ -1,9 +1,12 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { SplashScreen } from '../screens/splash/screen'
-import { OnboardingScreen } from '../screens/onboarding/screen'
 import { CustomNavBar } from '../components'
+import { HomeScreen } from '../screens/home/screen'
+import { MyTripScreen } from '../screens/my-trip/screen'
+import { SearchScreen } from '../screens/search/screen'
+import { SavedScreen } from '../screens/saved/screen'
+import { SettingsScreen } from '../screens/settings/screen'
 
 const Tab = createBottomTabNavigator()
 
@@ -22,8 +25,11 @@ export function BottomTabNavigator() {
         tabBarButton: (props: any) => <CustomNavBar {...props} route={route} />,
       })}
     >
-      <Tab.Screen name="Splash" component={SplashScreen} />
-      <Tab.Screen name="Onboarding" component={OnboardingScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="MyTrip" component={MyTripScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Saved" component={SavedScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   )
 }
