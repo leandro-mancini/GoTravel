@@ -1,0 +1,49 @@
+<svg viewBox="0 0 300 300" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .arrow {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: float 2s ease-in-out infinite;
+    }
+    .arrow.green { animation-delay: 0.2s; }
+    .arrow.blue { animation-delay: 0.4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .post {
+      animation: grow 1s ease-out forwards;
+      transform-box: fill-box;
+      transform-origin: bottom center;
+    }
+
+    @keyframes grow {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+  </style>
+
+  <!-- Base -->
+  <rect x="130" y="250" width="40" height="20" rx="10" fill="#e6e6fa"/>
+
+  <!-- Post -->
+  <rect class="post" x="145" y="120" width="10" height="130" fill="#a0522d"/>
+
+  <!-- Arrows grouped to preserve layout -->
+  <g class="arrow green">
+    <polygon points="90,150 160,120 160,135 90,165" fill="#7CFC00" />
+  </g>
+  <g class="arrow blue">
+    <polygon points="160,100 230,70 230,85 160,115" fill="#1E90FF" />
+  </g>
+
+  <!-- Text -->
+  <text x="150" y="280" font-size="18" font-family="Arial" fill="#333" text-anchor="middle" font-weight="bold">
+    GoTravel
+  </text>
+  <text x="150" y="295" font-size="10" font-family="Arial" fill="#333" text-anchor="middle">
+    FIND, PLAN, GO
+  </text>
+</svg>
