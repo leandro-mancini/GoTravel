@@ -1,23 +1,12 @@
-import React, { useEffect, useRef } from 'react'
-import { View, Text, StyleSheet, Animated } from 'react-native'
+import React, { useEffect } from 'react'
+import { View, StyleSheet, Animated, Text } from 'react-native'
 import { Icon } from '../../components'
 import { useTheme } from '@emotion/react'
+import { AnimatedFadeView } from '../../animations'
 
 export const SplashScreen = ({ navigation }: any) => {
     const theme = useTheme();
     const styles = createStyles(theme);
-
-    const logoAnim = useRef(new Animated.Value(0)).current
-    const nameAnim = useRef(new Animated.Value(0)).current
-    const sloganAnim = useRef(new Animated.Value(0)).current
-
-    useEffect(() => {
-        Animated.stagger(200, [
-            animateFadeSlide(logoAnim),
-            animateFadeSlide(nameAnim),
-            animateFadeSlide(sloganAnim),
-        ]).start();
-    }, [])
 
     useEffect(() => {
         setTimeout(() => {
@@ -27,63 +16,18 @@ export const SplashScreen = ({ navigation }: any) => {
 
     return (
         <View style={styles.container}>
-            <Animated.View style={[styles.animated, animatedTopStyle(logoAnim)]}>
+            <AnimatedFadeView animation="fadeIn">
                 <Icon name='Logo' size={138} />
-            </Animated.View>
-            <Animated.Text style={[styles.name, animatedRightStyle(nameAnim)]}>
-                GoTravel
-            </Animated.Text>
-            <Animated.Text style={[styles.slogan, animatedLeftStyle(sloganAnim)]}>
-                ENCONTRE, PLANEJE, VÁ
-            </Animated.Text>
+            </AnimatedFadeView>
+            <AnimatedFadeView animation="fadeInLeft" delay={150}>
+                <Text style={styles.name}>GoTravel</Text>
+            </AnimatedFadeView>
+            <AnimatedFadeView animation="fadeInRight" delay={300}>
+                <Text style={styles.slogan}>ENCONTRE, PLANEJE, VÁ</Text>
+            </AnimatedFadeView>
         </View>
     )
 }
-
-
-const animateFadeSlide = (animatedValue: Animated.Value) =>
-    Animated.timing(animatedValue, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-    })
-
-const animatedTopStyle = (animatedValue: Animated.Value) => ({
-    opacity: animatedValue,
-    transform: [
-        {
-            translateY: animatedValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [20, 0],
-            }),
-        },
-    ],
-})
-
-const animatedRightStyle = (animatedValue: Animated.Value) => ({
-    opacity: animatedValue,
-    transform: [
-        {
-            translateX: animatedValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [-20, 0],
-            }),
-        },
-    ],
-})
-
-const animatedLeftStyle = (animatedValue: Animated.Value) => ({
-    opacity: animatedValue,
-    transform: [
-        {
-            translateX: animatedValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [20, 0],
-            }),
-        },
-    ],
-})
-
 
 const createStyles = (theme: ReturnType<typeof useTheme>) =>
     StyleSheet.create({
@@ -94,9 +38,6 @@ const createStyles = (theme: ReturnType<typeof useTheme>) =>
             alignItems: "center",
             justifyContent: "center",
             gap: 4
-        },
-        animated: {
-            alignItems: "center",
         },
         name: {
             paddingTop: 36,

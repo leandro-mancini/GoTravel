@@ -2,6 +2,7 @@ import { useTheme } from '@emotion/react';
 import React, { useEffect, useRef } from 'react'
 import { StyleSheet, ImageBackground, Animated, Text, View } from 'react-native'
 import { Button, Icon } from '../../components';
+import { AnimatedFadeView } from '../../animations';
 
 const AnimatedImageBackground = Animated.createAnimatedComponent(ImageBackground)
 
@@ -9,68 +10,55 @@ export const OnboardingScreen = () => {
   const theme = useTheme();
   const styles = createStyles(theme);
   const scale = useRef(new Animated.Value(1.2)).current;
-  const helloAnim = useRef(new Animated.Value(0)).current
 
   useEffect(() => {
     Animated.timing(scale, {
       toValue: 1,
-      duration: 800,
+      duration: 3000,
       useNativeDriver: true,
     }).start()
-
-    Animated.stagger(200, [
-      animateFadeSlide(helloAnim),
-    ]).start();
   }, [])
 
   return (
     <View style={styles.wrapper}>
       {/* Background animado separado */}
-      <AnimatedImageBackground
-        source={require("../../../assets/images/bg-onboarding.png")}
-        style={[styles.background, { transform: [{ scale }] }]}
-        resizeMode="cover"
-      />
+      <AnimatedFadeView animation="fadeIn" style={[styles.background]}>
+        <AnimatedImageBackground
+          source={require("../../../assets/images/bg-onboarding.png")}
+          style={[styles.background, { transform: [{ scale }] }]}
+          resizeMode="cover"
+        />
+      </AnimatedFadeView>
 
       {/* Conteúdo sobre o fundo */}
       <View style={styles.container}>
-        <Animated.View style={[styles.hello, animatedTopStyle(helloAnim)]}>
-          <Text style={styles.title}>Bem-vindo</Text>
-          <Text style={styles.description}>
-            Explore a nova experiência com a GoTravel
-          </Text>
-        </Animated.View>
+        <View style={styles.hello}>
+          <AnimatedFadeView animation="fadeInUp">
+            <Text style={styles.title}>Bem-vindo</Text>
+          </AnimatedFadeView>
+          <AnimatedFadeView animation="fadeInUp" delay={300}>
+            <Text style={styles.description}>
+              Explore a nova experiência com a GoTravel
+            </Text>
+          </AnimatedFadeView>
+        </View>
+          
         <View style={styles.buttons}>
-          <Button variant="outline" label="Continuar com o Google" onPress={() => {}}>
-            <Icon name="Google" size={20} />
-          </Button>
-          <Button variant="outline" label="Continuar com o Facebook" onPress={() => {}}>
-            <Icon name="Facebook" size={20} />
-          </Button>
+          <AnimatedFadeView animation="fadeInUp" delay={600}>
+            <Button variant="outline" label="Continuar com o Google" onPress={() => {}}>
+              <Icon name="Google" size={20} />
+            </Button>
+          </AnimatedFadeView>
+          <AnimatedFadeView animation="fadeInUp" delay={900}>
+            <Button variant="outline" label="Continuar com o Facebook" onPress={() => {}}>
+              <Icon name="Facebook" size={20} />
+            </Button>
+          </AnimatedFadeView>
         </View>
       </View>
     </View>
   )
 }
-
-const animateFadeSlide = (animatedValue: Animated.Value) =>
-  Animated.timing(animatedValue, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: true,
-  })
-
-const animatedTopStyle = (animatedValue: Animated.Value) => ({
-  opacity: animatedValue,
-  transform: [
-      {
-          translateY: animatedValue.interpolate({
-              inputRange: [0, 1],
-              outputRange: [20, 0],
-          }),
-      },
-  ],
-})
 
 const createStyles = (theme: ReturnType<typeof useTheme>) =>
   StyleSheet.create({
