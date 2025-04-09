@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { StyleSheet, ImageBackground, Animated, Text, View } from 'react-native'
 import { Button, Icon } from '../../components';
 import { AnimatedFadeView } from '../../animations';
+import { useAuth } from '../../hooks/useAuth';
 
 const AnimatedImageBackground = Animated.createAnimatedComponent(ImageBackground)
 
@@ -10,6 +11,8 @@ export const OnboardingScreen = () => {
   const theme = useTheme();
   const styles = createStyles(theme);
   const scale = useRef(new Animated.Value(1.2)).current;
+
+  const { user, login, logout, isLoggedIn } = useAuth();
 
   useEffect(() => {
     Animated.timing(scale, {
@@ -45,7 +48,7 @@ export const OnboardingScreen = () => {
           
         <View style={styles.buttons}>
           <AnimatedFadeView animation="fadeInUp" delay={600}>
-            <Button variant="outline" label="Continuar com o Google" onPress={() => {}}>
+            <Button variant="outline" label="Continuar com o Google" onPress={login}>
               <Icon name="Google" size={20} />
             </Button>
           </AnimatedFadeView>

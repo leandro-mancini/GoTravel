@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "163471353744",
+    "project_id": "gotravel-5204e",
+    "storage_bucket": "gotravel-5204e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163471353744:android:e146320b285d449d8cb515",
+        "android_client_info": {
+          "package_name": "com.gotravel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRXgXAwZyQCMAdbXlHVnjCTElqJiMqEOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
