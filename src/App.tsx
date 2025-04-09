@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { ThemeProvider } from './theme/provider'
 import { AppNavigation } from './navigation'
-import { configureGoogleSignIn } from './services';
+// import { configureGoogleSignIn } from './services';
+// import { Settings } from 'react-native-fbsdk-next';
 
 const App = () => {
   useEffect(() => {
-    configureGoogleSignIn();
+    // configureGoogleSignIn();
+    // Settings.initializeSDK();
   }, []);
   
   return (

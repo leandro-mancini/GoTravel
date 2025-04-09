@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GoTravel</string>
+    <string name="facebook_app_id">SEU_APP_ID</string>
+    <string name="fb_login_protocol_scheme">fbSEU_APP_ID</string>
 </resources>

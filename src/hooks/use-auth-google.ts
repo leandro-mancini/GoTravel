@@ -1,8 +1,8 @@
 import { signInWithGoogle, signOutGoogle } from "../services";
-import { useAuthStore } from "../store";
+import { useAuthGoogleStore } from "../store";
 
-export function useAuth() {
-  const { user, setUser } = useAuthStore();
+export function useAuthGoogle() {
+  const { user, setUser } = useAuthGoogleStore();
 
   const login = async () => {
     const userInfo = await signInWithGoogle();
