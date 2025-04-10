@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import { Icon } from './icon'
 import Ripple from 'react-native-material-ripple'
 import { useTheme } from '@emotion/react'
@@ -69,7 +69,7 @@ const createStyles = (theme: ReturnType<typeof useTheme>) =>
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
-      gap: 4
+      gap: 4,
     },
     label: {
       fontSize: 10,

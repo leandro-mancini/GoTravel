@@ -18,10 +18,8 @@ export function BottomTabNavigator() {
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 80,
-          backgroundColor: 'white',
           borderTopWidth: 0,
-          elevation: 0,
-          boxShadow: "0 -10 34 0 rgba(217,218,222,0.30)"
+          elevation: 34,
         },
         tabBarButton: (props: any) => (
           <CustomNavBar {...props} route={route} isFocused={props.accessibilityState?.selected} />
