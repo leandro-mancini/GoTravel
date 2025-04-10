@@ -21,13 +21,23 @@ export function BottomTabNavigator() {
           backgroundColor: 'white',
           borderTopWidth: 0,
           elevation: 0,
+          boxShadow: "0 -10 34 0 rgba(217,218,222,0.30)"
         },
-        tabBarButton: (props: any) => <CustomNavBar {...props} route={route} />,
+        tabBarButton: (props: any) => (
+          <CustomNavBar {...props} route={route} isFocused={props.accessibilityState?.selected} />
+        ),
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="MyTrip" component={MyTripScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarStyle: {display: 'none' },
+          tabBarLabel: 'Buscar'
+        }}
+      />
       <Tab.Screen name="Saved" component={SavedScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>

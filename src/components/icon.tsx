@@ -20,7 +20,7 @@ export const Icon: React.FC<IconProps> = React.memo(({ size = 24, color = "#000"
     <SelectedIcon
       width={size}
       height={size}
-      fill={color}
+      color={color}
       {...props}
     />
   );
