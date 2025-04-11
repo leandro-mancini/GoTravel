@@ -1,12 +1,12 @@
+import { useTheme } from '@emotion/react';
 import React, { ReactNode } from 'react';
 import {
-  Pressable,
-  StyleSheet,
   ViewStyle,
   GestureResponderEvent,
   StyleProp,
 } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+import { iconButtonRecipe } from '../theme';
 
 type Variant = 'outline' | 'ghost';
 
@@ -16,7 +16,6 @@ interface IconButtonProps {
   size?: number;
   variant?: Variant;
   style?: StyleProp<ViewStyle>;
-  color?: string;
 }
 
 export const IconButton: React.FC<IconButtonProps> = ({
@@ -25,8 +24,10 @@ export const IconButton: React.FC<IconButtonProps> = ({
   size = 24,
   variant = 'outline',
   style,
-  color = '#1c1c1c',
 }) => {
+  const theme = useTheme();
+  const styles = iconButtonRecipe(theme);
+  
   const containerStyle: StyleProp<ViewStyle> = [
     styles.base,
     variant === 'outline' && styles.outline,
@@ -41,18 +42,3 @@ export const IconButton: React.FC<IconButtonProps> = ({
     </Ripple>
   );
 };
-
-const styles = StyleSheet.create({
-  base: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-  },
-  outline: {
-    borderWidth: 1,
-    borderColor: '#EAF0F3',
-  },
-  ghost: {
-    backgroundColor: 'transparent',
-  },
-});

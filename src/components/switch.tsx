@@ -38,7 +38,7 @@ export const Switch: React.FC<SwitchProps> = ({
 
   const backgroundColor = offset.interpolate({
     inputRange: [0, 1],
-    outputRange: ['#F2F2F2', '#003AD2'],
+    outputRange: [theme.colors.border.tertiary, theme.colors.primary[100]],
   });
 
   return (

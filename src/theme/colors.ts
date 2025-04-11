@@ -72,6 +72,11 @@ export const colorsLight: Theme['colors'] = {
         "20": "rgba(166,167,189,0.20)",
         "10": "rgba(166,167,189,0.10)",
       }
+    },
+    border: {
+      primary: "#EAF0F3",
+      secondary: "#EEEEEE",
+      tertiary: "#F2F2F2"
     }
 }
 
@@ -98,7 +103,7 @@ export const colorsDark: Theme['colors'] = {
   },
   text: {
     primary: {
-      "100": "#23262F",
+      "100": "#FFF",
       "80": "rgba(35,38,47,0.80)",
       "60": "rgba(35,38,47,0.60)",
       "40": "rgba(35,38,47,0.40)",
@@ -147,5 +152,10 @@ export const colorsDark: Theme['colors'] = {
       "20": "rgba(166,167,189,0.20)",
       "10": "rgba(166,167,189,0.10)",
     }
+  },
+  border: {
+    primary: "#3A3F4D",
+    secondary: "#3A3F4D",
+    tertiary: "#2F3342"
   }
 }

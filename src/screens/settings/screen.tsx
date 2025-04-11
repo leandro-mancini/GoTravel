@@ -11,7 +11,6 @@ export const SettingsScreen = () => {
     const styles = createStyles(theme);
     const navigation = useNavigation();
     const [notification, setNotification] = useState(true);
-    // const [darkMode, setDarkMode] = useState(false);
     const [emailNotification, setEmailNotification] = useState(false);
     const { themeMode, toggleTheme } = useThemeMode();
     const isDark = themeMode === 'dark';
@@ -20,7 +19,7 @@ export const SettingsScreen = () => {
         <SafeAreaView style={styles.container}>
           <View style={styles.header}>
             <IconButton onPress={() => navigation.goBack()}>
-                <Icon name="ArrowLeft2" size={16} color="#23262F" />
+                <Icon name="ArrowLeft2" size={16} color={theme.colors.text.primary[100]} />
             </IconButton>
             <Ripple onPress={() => {}} rippleContainerBorderRadius={100}>
                 <Avatar source="https://avatars.githubusercontent.com/u/8883746?v=4" size={44} />
@@ -52,14 +51,14 @@ export const SettingsScreen = () => {
     
           <Ripple style={styles.navRow}>
             <Text style={styles.optionText}>Sobre o aplicativo</Text>
-            <Icon name="ArrowRight2" size={16} color="#23262F" />
+            <Icon name="ArrowRight2" size={16} color={theme.colors.text.primary[100]} />
           </Ripple>
     
           <View style={styles.separator} />
     
           <Ripple style={styles.navRow}>
             <Text style={styles.optionText}>Compartilhar aplicativo</Text>
-            <Icon name="ArrowRight2" size={16} color="#23262F" />
+            <Icon name="ArrowRight2" size={16} color={theme.colors.text.primary[100]} />
           </Ripple>
     
           <View style={styles.separator} />
@@ -72,6 +71,11 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
       flex: 1,
       backgroundColor: theme.colors.base,
     },
+    avatar: {
+        borderRadius: 999,
+        boxShadow: "0 3 10 0 rgba(16,16,16,1)",
+        backgroundColor: "black"
+    },
     header: {
       flexDirection: 'row',
       marginTop: 30,
@@ -80,18 +84,9 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
       justifyContent: 'space-between',
       paddingHorizontal: 24
     },
-    backButton: {
-      width: 40,
-      height: 40,
-      borderRadius: 20,
-      borderWidth: 1,
-      borderColor: '#eee',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
     title: {
       fontFamily: theme.typography.fontFamily.medium,
-      color: "#23262F",
+      color: theme.colors.text.primary[100],
       fontSize: 22,
       paddingHorizontal: 24
     },
@@ -113,11 +108,11 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
       fontSize: 14,
       lineHeight: 16,
       fontFamily: theme.typography.fontFamily.medium,
-      color: '#23262F',
+      color: theme.colors.text.primary[100],
     },
     separator: {
       height: 1,
-      backgroundColor: '#EEEEEE',
+      backgroundColor: theme.colors.border.secondary,
       marginHorizontal: 24
     },
   });

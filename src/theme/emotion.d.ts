@@ -75,6 +75,11 @@ declare module '@emotion/react' {
           20: string
           10: string
         }
+      },
+      border: {
+        primary: string
+        secondary: string
+        tertiary: string
       }
     }
     typography: {
