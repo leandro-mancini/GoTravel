@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SafeAreaView, Share, StyleSheet, Text, View } from "react-native";
-import { Avatar, Icon, IconButton, Switch } from "../../components";
+import { AppBar, Avatar, Icon, IconButton, Switch } from "../../components";
 import Ripple from "react-native-material-ripple";
 import { useTheme } from "@emotion/react";
 import { useNavigation } from "@react-navigation/native";
@@ -27,14 +27,14 @@ export const SettingsScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-          <View style={styles.header}>
-            <IconButton onPress={() => navigation.goBack()}>
-                <Icon name="ArrowLeft2" size={16} color={theme.colors.text.primary[100]} />
-            </IconButton>
-            <Ripple onPress={() => {}} rippleContainerBorderRadius={100}>
-                <Avatar source="https://avatars.githubusercontent.com/u/8883746?v=4" size={44} />
-            </Ripple>
-          </View>
+          <AppBar
+              canGoBack
+              rightActions={
+                  <Ripple onPress={() => {}} rippleContainerBorderRadius={100}>
+                      <Avatar source="https://avatars.githubusercontent.com/u/8883746?v=4" size={44} />
+                  </Ripple>
+              }
+          />
 
           <Text style={styles.title}>Ajustes</Text>
     
