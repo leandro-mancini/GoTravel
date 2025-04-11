@@ -7,7 +7,6 @@ export const appbarRecipe = (theme: ReturnType<typeof useTheme>) => StyleSheet.c
         backgroundColor: theme.colors.base
     },
     inner: {
-        // height: 56,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -22,7 +21,6 @@ export const appbarRecipe = (theme: ReturnType<typeof useTheme>) => StyleSheet.c
         fontFamily: theme.typography.fontFamily.medium
     },
     right: {
-        // width: 40,
-        // alignItems: 'flex-end',
+        alignItems: 'flex-end',
     },
 })

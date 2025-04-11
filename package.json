@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "asset": "react-native-asset"
   },
   "dependencies": {
     "@emotion/native": "^11.11.0",
@@ -23,6 +24,7 @@
     "react-native": "0.79.0",
     "react-native-fbsdk-next": "^13.4.1",
     "react-native-gesture-handler": "^2.25.0",
+    "react-native-linear-gradient": "^2.8.3",
     "react-native-material-ripple": "^0.9.1",
     "react-native-reanimated": "^3.17.3",
     "react-native-safe-area-context": "^5.3.0",

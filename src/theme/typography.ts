@@ -4,6 +4,7 @@ export const typography: Theme['typography'] = {
   fontFamily: {
     regular: "Poppins-Light",
     medium: "Poppins-Medium",
+    semiBold: "Poppins-SemiBold",
     bold: "Poppins-Bold",
     extraBold: "Poppins-ExtraBold"
   },

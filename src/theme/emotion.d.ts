@@ -98,6 +98,7 @@ declare module '@emotion/react' {
       fontFamily: {
         regular: string
         medium: string
+        semiBold: string
         bold: string
         extraBold: string
       },
