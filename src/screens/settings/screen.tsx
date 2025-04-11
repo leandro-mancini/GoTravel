@@ -4,14 +4,17 @@ import { Avatar, Icon, IconButton, Switch } from "../../components";
 import Ripple from "react-native-material-ripple";
 import { useTheme } from "@emotion/react";
 import { useNavigation } from "@react-navigation/native";
+import { useThemeMode } from "../../hooks";
 
 export const SettingsScreen = () => {
     const theme = useTheme();
     const styles = createStyles(theme);
     const navigation = useNavigation();
     const [notification, setNotification] = useState(true);
-    const [darkMode, setDarkMode] = useState(false);
+    // const [darkMode, setDarkMode] = useState(false);
     const [emailNotification, setEmailNotification] = useState(false);
+    const { themeMode, toggleTheme } = useThemeMode();
+    const isDark = themeMode === 'dark';
 
     return (
         <SafeAreaView style={styles.container}>
@@ -35,7 +38,7 @@ export const SettingsScreen = () => {
     
           <View style={styles.optionRow}>
             <Text style={styles.optionText}>Modo escuro</Text>
-            <Switch value={darkMode} onValueChange={setDarkMode} />
+            <Switch value={isDark} onValueChange={toggleTheme} />
           </View>
     
           <View style={styles.separator} />
@@ -67,7 +70,7 @@ export const SettingsScreen = () => {
 const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: theme.colors.base,
     },
     header: {
       flexDirection: 'row',

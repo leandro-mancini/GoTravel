@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import {
-  View,
   Pressable,
   Animated,
-  StyleSheet,
   StyleProp,
   ViewStyle,
 } from 'react-native';
+import { switchRecipe } from '../theme';
+import { useTheme } from '@emotion/react';
 
 interface SwitchProps {
   value: boolean;
@@ -20,6 +20,8 @@ export const Switch: React.FC<SwitchProps> = ({
   style,
 }) => {
   const offset = useRef(new Animated.Value(value ? 1 : 0)).current;
+  const theme = useTheme();
+  const styles = switchRecipe(theme);
 
   useEffect(() => {
     Animated.timing(offset, {
@@ -42,7 +44,7 @@ export const Switch: React.FC<SwitchProps> = ({
   return (
     <Pressable
       onPress={() => onValueChange(!value)}
-      style={[styles.switchContainer, style]}
+      style={[styles.container, style]}
     >
       <Animated.View style={[styles.track, { backgroundColor }]}>
         <Animated.View
@@ -57,23 +59,3 @@ export const Switch: React.FC<SwitchProps> = ({
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  switchContainer: {
-    width: 50,
-    height: 30,
-    justifyContent: 'center',
-  },
-  track: {
-    width: 44,
-    height: 24,
-    borderRadius: 999,
-    padding: 2,
-  },
-  thumb: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-  },
-});

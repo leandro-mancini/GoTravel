@@ -38,7 +38,7 @@ const ButtonContainer = styled(Ripple)<{ variant: ButtonProps['variant'] }>(({ t
 }))
 
 const ButtonText = styled(Text)<{ variant: ButtonProps['variant'] }>(({ theme, variant }) => ({
-  color: variant === 'outline' ? "#181818" : theme.colors.white,
+  color: variant === 'outline' ? "#181818" : theme.colors.base,
   ...theme.textStyle.buttonText[3],
   fontFamily: theme.typography.fontFamily.medium
 }))

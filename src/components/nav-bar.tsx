@@ -1,11 +1,12 @@
 import React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { Text } from 'react-native'
 import { Icon } from './icon'
 import Ripple from 'react-native-material-ripple'
 import { useTheme } from '@emotion/react'
 import { useNavigation } from '@react-navigation/native'
+import { navbarRecipe } from '../theme'
 
-type CustomNavBarProps = {
+type NavBarProps = {
   onPress: () => void
   route: { name: string }
   isFocused: boolean
@@ -19,12 +20,12 @@ const LABELS: Record<string, string> = {
   Settings: 'Ajustes',
 }
 
-export const CustomNavBar = ({ onPress, route , isFocused}: CustomNavBarProps) => {
+export const NavBar = ({ onPress, route , isFocused}: NavBarProps) => {
   const navigation = useNavigation();
   const theme = useTheme();
-  const styles = createStyles(theme);
+  const styles = navbarRecipe(theme);
   
-  const color = isFocused ? '#003AD2' : '#777E90';
+  const color = isFocused ? theme.colors.primary[100] : theme.colors.text.secondary[100];
   const label = LABELS[route.name] || route.name;
 
   const renderIcon = (color: string) => {
@@ -46,7 +47,7 @@ export const CustomNavBar = ({ onPress, route , isFocused}: CustomNavBarProps) =
 
   const handlePress = () => {
     if (route.name === 'Search') {
-      navigation.navigate('SearchFullScreen') // Navega fora da Tab
+      navigation.navigate('SearchFullScreen' as never) // Navega fora da Tab
     } else {
       onPress()
     }
@@ -62,18 +63,3 @@ export const CustomNavBar = ({ onPress, route , isFocused}: CustomNavBarProps) =
     </Ripple>
   )
 }
-
-const createStyles = (theme: ReturnType<typeof useTheme>) =>
-  StyleSheet.create({
-    button: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      gap: 4,
-    },
-    label: {
-      fontSize: 10,
-      lineHeight: 12,
-      fontFamily: theme.typography.fontFamily.medium
-    }
-  })

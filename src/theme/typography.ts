@@ -8,6 +8,7 @@ export const typography: Theme['typography'] = {
     extraBold: "Poppins-ExtraBold"
   },
   fontSize: {
+    xs: 10,
     sm: 12,
     md: 14,
     lg: 16,
@@ -18,15 +19,4 @@ export const typography: Theme['typography'] = {
     "5xl": 26,
     "6xl": 28
   },
-  lineHeight: {
-    sm: 14,
-    md: 16,
-    lg: 18,
-    xl: 20,
-    "2xl": 22,
-    "3xl": 24,
-    "4xl": 26,
-    "5xl": 28,
-    "6xl": 30
-  }
 }

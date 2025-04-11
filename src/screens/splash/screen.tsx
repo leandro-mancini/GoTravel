@@ -33,7 +33,7 @@ const createStyles = (theme: ReturnType<typeof useTheme>) =>
     StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: theme.colors.white,
+            backgroundColor: theme.colors.base,
             padding: 16,
             alignItems: "center",
             justifyContent: "center",

@@ -4,7 +4,10 @@ import { TextStyle } from 'react-native'
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
-      white: string
+      transparent: string
+      current: string
+      base: string
+      surface: string
       primary: {
         100: string
         80: string
@@ -76,6 +79,7 @@ declare module '@emotion/react' {
     }
     typography: {
       fontSize: {
+        xs: number
         sm: number
         md: number
         lg: number
@@ -92,17 +96,6 @@ declare module '@emotion/react' {
         bold: string
         extraBold: string
       },
-      lineHeight: {
-        sm: number
-        md: number
-        lg: number
-        xl: number
-        '2xl': number
-        '3xl': number
-        '4xl': number
-        '5xl': number
-        '6xl': number
-      }
     }
     textStyle: {
       heading: {
@@ -123,6 +116,7 @@ declare module '@emotion/react' {
         2: TextStyle
         3: TextStyle
         4: TextStyle
+        5: TextStyle
       }
       buttonText: {
         1: TextStyle

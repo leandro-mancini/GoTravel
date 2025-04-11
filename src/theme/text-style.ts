@@ -6,93 +6,98 @@ export const textStyle: Theme['textStyle'] = {
         "1": {
           fontSize: typography.fontSize["6xl"],
           fontFamily: typography.fontFamily.bold,
-          lineHeight: typography.lineHeight["6xl"]
+          lineHeight: 30
         },
         "2": {
           fontSize: typography.fontSize["5xl"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["5xl"]
+          lineHeight: 28
         },
         "3": {
           fontSize: typography.fontSize["4xl"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["4xl"]
+          lineHeight: 26
         },
         "4": {
           fontSize: typography.fontSize["3xl"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["3xl"]
+          lineHeight: 24
         },
         "5": {
           fontSize: typography.fontSize["2xl"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["2xl"]
+          lineHeight: 22
         }
       },
       subHeading: {
         "1": {
           fontSize: typography.fontSize["xl"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["xl"]
+          lineHeight: 20
         },
         "2": {
           fontSize: typography.fontSize["lg"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["lg"]
+          lineHeight: 18
         },
         "3": {
           fontSize: typography.fontSize["md"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["md"]
+          lineHeight: 16
         },
         "4": {
           fontSize: typography.fontSize["sm"],
           fontFamily: typography.fontFamily.medium,
-          lineHeight: typography.lineHeight["sm"]
+          lineHeight: 14
         }
       },
       bodyText: {
         "1": {
           fontSize: typography.fontSize["xl"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["xl"]
+          lineHeight: 20
         },
         "2": {
           fontSize: typography.fontSize["lg"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["lg"]
+          lineHeight: 18
         },
         "3": {
           fontSize: typography.fontSize["md"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["md"]
+          lineHeight: 16
         },
         "4": {
           fontSize: typography.fontSize["sm"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["sm"]
+          lineHeight: 14
+        },
+        "5": {
+          fontSize: typography.fontSize["xs"],
+          fontFamily: typography.fontFamily.regular,
+          lineHeight: 12
         }
       },
       buttonText: {
         "1": {
           fontSize: typography.fontSize["2xl"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["2xl"]
+          lineHeight: 22
         },
         "2": {
           fontSize: typography.fontSize["lg"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["lg"]
+          lineHeight: 18
         },
         "3": {
           fontSize: typography.fontSize["md"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["md"]
+          lineHeight: 16
         },
         "4": {
           fontSize: typography.fontSize["sm"],
           fontFamily: typography.fontFamily.regular,
-          lineHeight: typography.lineHeight["sm"]
+          lineHeight: 14
         }
       }
 }

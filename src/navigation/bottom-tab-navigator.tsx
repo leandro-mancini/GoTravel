@@ -1,28 +1,29 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { CustomNavBar } from '../components'
+import { NavBar } from '../components'
 import { HomeScreen } from '../screens/home/screen'
 import { MyTripScreen } from '../screens/my-trip/screen'
 import { SearchScreen } from '../screens/search/screen'
 import { SavedScreen } from '../screens/saved/screen'
 import { SettingsScreen } from '../screens/settings/screen'
+import { useTheme } from '@emotion/react'
+import { navbarRecipe } from '../theme'
 
 const Tab = createBottomTabNavigator()
 
 export function BottomTabNavigator() {
+  const theme = useTheme();
+  const styles = navbarRecipe(theme);
+  
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {
-          height: 80,
-          borderTopWidth: 0,
-          elevation: 34,
-        },
+        tabBarStyle: styles.container,
         tabBarButton: (props: any) => (
-          <CustomNavBar {...props} route={route} isFocused={props.accessibilityState?.selected} />
+          <NavBar {...props} route={route} isFocused={props.accessibilityState?.selected} />
         ),
       })}
     >
