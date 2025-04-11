@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, Share, StyleSheet, Text, View } from "react-native";
 import { Avatar, Icon, IconButton, Switch } from "../../components";
 import Ripple from "react-native-material-ripple";
 import { useTheme } from "@emotion/react";
@@ -10,10 +10,20 @@ export const SettingsScreen = () => {
     const theme = useTheme();
     const styles = createStyles(theme);
     const navigation = useNavigation();
-    const [notification, setNotification] = useState(true);
+    const [notification, setNotification] = useState(false);
     const [emailNotification, setEmailNotification] = useState(false);
     const { themeMode, toggleTheme } = useThemeMode();
     const isDark = themeMode === 'dark';
+
+    const handleShare = async () => {
+        try {
+            await Share.share({
+                message: '✈️ Baixe o Go Travel e descubra experiências incríveis de viagem ao redor do mundo! 🌍\n\n👉 Disponível em: https://go-travel.app', // substitua com o link real se tiver
+            });
+        } catch (error) {
+            console.error('Erro ao compartilhar o app:', error);
+        }
+    };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -56,7 +66,7 @@ export const SettingsScreen = () => {
     
           <View style={styles.separator} />
     
-          <Ripple style={styles.navRow}>
+          <Ripple style={styles.navRow} onPress={handleShare}>
             <Text style={styles.optionText}>Compartilhar aplicativo</Text>
             <Icon name="ArrowRight2" size={16} color={theme.colors.text.primary[100]} />
           </Ripple>
