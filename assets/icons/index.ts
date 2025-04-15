@@ -12,3 +12,4 @@ export { default as Logo } from './logo.svg';
 export { default as Search } from './search.svg';
 export { default as SettingFilled } from './setting-filled.svg';
 export { default as Setting } from './setting.svg';
+export { default as Star } from './star.svg';

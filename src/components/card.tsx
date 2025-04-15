@@ -1,6 +1,8 @@
 import { ImageBackground, ImageSourcePropType, StyleSheet, Text, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { Icon } from "./icon";
+import { useTheme } from "@emotion/react";
+import { Rating } from "./rating";
 
 type CardVariant = 'default' | 'price' | 'square';
 
@@ -22,6 +24,9 @@ export const Card: React.FC<CardProps> = ({
   const isSquare = variant === 'square';
   const isPrice = variant === 'price';
 
+  const theme = useTheme();
+  const styles = createStyles(theme);
+
   return (
     <ImageBackground
       source={image}
@@ -33,20 +38,21 @@ export const Card: React.FC<CardProps> = ({
         style={styles.gradient}
       />
       <View style={styles.saveButton}>
-        <Icon name="Bookmark" size={20} color="#000" />
+        <Icon name="Bookmark" size={12} color={theme.colors.text.primary[100]} />
       </View>
 
       <View style={styles.content}>
         {variant !== 'price' && (
           <View style={styles.rating}>
-            <Text style={styles.star}>⭐️⭐️⭐️⭐️⭐️</Text>
-            <Text style={styles.ratingText}>{rating}</Text>
+            <Rating max={5} value={rating} size={10} />
+            {/* <Text style={styles.star}>⭐️⭐️⭐️⭐️⭐️</Text> */}
+            {/* <Text style={styles.ratingText}>{rating}</Text> */}
           </View>
         )}
 
         <Text style={styles.title}>{title}</Text>
 
-        {(variant === 'price' || variant === 'square') && subtitle && (
+        {(isPrice || isSquare) && subtitle && (
           <Text style={styles.subtitle}>{subtitle}</Text>
         )}
       </View>
@@ -54,11 +60,10 @@ export const Card: React.FC<CardProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
   container: {
-    borderRadius: 20,
+    borderRadius: 30,
     overflow: 'hidden',
-    marginVertical: 10,
   },
   image: {
     width: '100%',
@@ -73,33 +78,38 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 12,
     right: 12,
-    backgroundColor: '#fff',
-    padding: 8,
+    backgroundColor: theme.colors.base,
     borderRadius: 100,
     zIndex: 1,
+    width: 30,
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center"
   },
   content: {
     position: 'absolute',
-    bottom: 12,
-    left: 12,
+    bottom: 24,
+    left: 20,
+    gap: 10
   },
   rating: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  star: {
-    fontSize: 14,
-    color: '#FFD700',
-  },
-  ratingText: {
-    color: '#fff',
-    marginLeft: 6,
-    fontSize: 14,
-  },
+  // star: {
+  //   fontSize: 14,
+  //   color: '#FFD700',
+  // },
+  // ratingText: {
+  //   color: '#fff',
+  //   marginLeft: 6,
+  //   fontSize: 14,
+  // },
   title: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+    color: theme.colors.base,
+    fontSize: 22,
+    lineHeight: 24,
+    fontFamily: theme.typography.fontFamily.medium
   },
   subtitle: {
     color: '#fff',
