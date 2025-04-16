@@ -10,6 +10,7 @@ interface CardProps {
   variant?: CardVariant;
   title: string;
   subtitle?: string;
+  price?: string;
   image: ImageSourcePropType;
   rating?: number;
 }
@@ -18,6 +19,7 @@ export const Card: React.FC<CardProps> = ({
   variant = 'default',
   title,
   subtitle,
+  price,
   image,
   rating = 4.5,
 }) => {
@@ -31,7 +33,7 @@ export const Card: React.FC<CardProps> = ({
     <ImageBackground
       source={image}
       style={[styles.container, variantStyles[variant]]}
-      imageStyle={[styles.image, isPrice && styles.redBorder]}
+      imageStyle={styles.image}
     >
       <LinearGradient
         colors={['transparent', 'rgba(0,0,0,0.8)']}
@@ -48,8 +50,11 @@ export const Card: React.FC<CardProps> = ({
 
         <Text style={styles.title}>{title}</Text>
 
-        {(isPrice || isSquare) && subtitle && (
-          <Text style={styles.subtitle}>{subtitle}</Text>
+        {(isPrice || isSquare) && price && (
+          <View style={{ gap: 4, flexDirection: "row" }}>
+            <Text style={styles.price}>{price}</Text>
+            <Text style={styles.priceDay}>/ por dia</Text>
+          </View>
         )}
       </View>
     </ImageBackground>
@@ -72,8 +77,8 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
   },
   saveButton: {
     position: 'absolute',
-    top: 12,
-    right: 12,
+    top: 20,
+    right: 20,
     backgroundColor: theme.colors.base,
     borderRadius: 100,
     zIndex: 1,
@@ -98,23 +103,27 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
     lineHeight: 24,
     fontFamily: theme.typography.fontFamily.medium
   },
-  subtitle: {
+  price: {
+    color: '#fff',
+    fontSize: 16,
+    lineHeight: 18,
+    fontFamily: theme.typography.fontFamily.medium
+  },
+  priceDay: {
     color: '#fff',
     fontSize: 14,
-  },
-  redBorder: {
-    borderColor: 'red',
-    borderWidth: 1,
+    lineHeight: 16,
+    fontFamily: theme.typography.fontFamily.regular
   },
 });
 
 const variantStyles: Record<CardVariant, any> = {
   default: {
-    height: 200,
+    height: 210,
     width: '100%',
   },
   price: {
-    height: 180,
+    height: 165,
     width: '100%',
   },
   square: {
