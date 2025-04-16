@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList } from "react-native";
 import { Card } from "../../components";
 import Ripple from "react-native-material-ripple";
 
@@ -42,7 +42,7 @@ const packages = [
     {
       id: '3',
       title: 'France, Paris',
-      rating: 4.7,
+      rating: 2.5,
       image: { uri: 'https://img.freepik.com/fotos-gratis/bela-foto-ampla-da-torre-eiffel-em-paris-rodeada-de-agua-com-navios-sob-o-ceu-colorido_181624-5118.jpg?t=st=1744419283~exp=1744422883~hmac=9d4bd95ef7b211e8d2a0bba6d2bec5b67ad541d3a2b4d8ff7779b4cc0eea4232&w=2000' },
     },
     {
@@ -54,7 +54,7 @@ const packages = [
     {
       id: '5',
       title: 'Japan, Kyoto',
-      rating: 4.2,
+      rating: 3.8,
       image: { uri: 'https://img.freepik.com/fotos-gratis/castelo-de-matsumoto-em-osaka-japao_1150-11177.jpg?t=st=1744419367~exp=1744422967~hmac=d162e9c0dc5bec26fd2be8a117f0c2df690aab461e35e5cd3b514634776a1b37&w=2000' },
     },
     // {

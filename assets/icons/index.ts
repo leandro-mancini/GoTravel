@@ -13,3 +13,5 @@ export { default as Search } from './search.svg';
 export { default as SettingFilled } from './setting-filled.svg';
 export { default as Setting } from './setting.svg';
 export { default as Star } from './star.svg';
+export { default as StarHalfOutline } from './star-half-outline.svg';
+export { default as StarOutline } from './star-outline.svg';

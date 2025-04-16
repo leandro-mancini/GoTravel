@@ -31,17 +31,17 @@ export const SavedScreen = () => {
                 screens={[
                     {
                         key: 'packages',
-                        title: 'Packages',
+                        title: 'Pacotes',
                         component: <PackagesView />,
                     },
                     {
                         key: 'flights',
-                        title: 'Flights',
+                        title: 'Voos',
                         component: <FightsView />,
                     },
                     {
                         key: 'hotels',
-                        title: 'Hotels',
+                        title: 'Hotéis',
                         component: <HotelsView />,
                     },
                 ]}

@@ -43,11 +43,7 @@ export const Card: React.FC<CardProps> = ({
 
       <View style={styles.content}>
         {variant !== 'price' && (
-          <View style={styles.rating}>
-            <Rating max={5} value={rating} size={10} />
-            {/* <Text style={styles.star}>⭐️⭐️⭐️⭐️⭐️</Text> */}
-            {/* <Text style={styles.ratingText}>{rating}</Text> */}
-          </View>
+          <Rating value={rating} size={10} />
         )}
 
         <Text style={styles.title}>{title}</Text>
@@ -96,17 +92,8 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  // star: {
-  //   fontSize: 14,
-  //   color: '#FFD700',
-  // },
-  // ratingText: {
-  //   color: '#fff',
-  //   marginLeft: 6,
-  //   fontSize: 14,
-  // },
   title: {
-    color: theme.colors.base,
+    color: "#FFF",
     fontSize: 22,
     lineHeight: 24,
     fontFamily: theme.typography.fontFamily.medium
