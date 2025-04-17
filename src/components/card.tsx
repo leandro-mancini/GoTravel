@@ -1,8 +1,9 @@
-import { ImageBackground, ImageSourcePropType, StyleSheet, Text, View } from "react-native";
+import { Animated, ImageBackground, ImageSourcePropType, StyleSheet, Text, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { Icon } from "./icon";
 import { useTheme } from "@emotion/react";
 import { Rating } from "./rating";
+import { useEffect, useRef, useState } from "react";
 
 type CardVariant = 'default' | 'price' | 'square';
 
@@ -29,13 +30,79 @@ export const Card: React.FC<CardProps> = ({
   const theme = useTheme();
   const styles = createStyles(theme);
 
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const skeletonAnim = useRef(new Animated.Value(0)).current;
+
+  const backgroundColor = skeletonAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['#e0e0e0', '#f5f5f5'],
+  });
+
+  useEffect(() => {
+    if (!isImageLoaded) {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(skeletonAnim, {
+            toValue: 1,
+            duration: 800,
+            useNativeDriver: false,
+          }),
+          Animated.timing(skeletonAnim, {
+            toValue: 0,
+            duration: 800,
+            useNativeDriver: false,
+          }),
+        ])
+      ).start();
+    }
+  }, [isImageLoaded]);
+
   return (
     <ImageBackground
       source={image}
       style={[styles.container, variantStyles[variant]]}
       imageStyle={styles.image}
+      onLoadEnd={() => setIsImageLoaded(true)}
     >
-      <LinearGradient
+      {/* Skeleton overlay */}
+        {!isImageLoaded && (
+          <Animated.View
+            style={[
+              StyleSheet.absoluteFillObject,
+              {
+                backgroundColor,
+              },
+            ]}
+          />
+        )}
+
+        {/* Resto do conteúdo */}
+        {isImageLoaded && (
+          <>
+            <LinearGradient
+              colors={['transparent', 'rgba(0,0,0,0.8)']}
+              style={styles.gradient}
+            />
+            <View style={styles.saveButton}>
+              <Icon name="Bookmark" size={12} color={theme.colors.text.primary[100]} />
+            </View>
+
+            <View style={styles.content}>
+              {variant !== 'price' && (
+                <Rating value={rating} size={10} />
+              )}
+              <Text style={styles.title}>{title}</Text>
+
+              {(isPrice || isSquare) && price && (
+                <View style={{ gap: 4, flexDirection: "row" }}>
+                  <Text style={styles.price}>{price}</Text>
+                  <Text style={styles.priceDay}>/ por dia</Text>
+                </View>
+              )}
+            </View>
+          </>
+        )}
+      {/* <LinearGradient
         colors={['transparent', 'rgba(0,0,0,0.8)']}
         style={styles.gradient}
       />
@@ -56,7 +123,7 @@ export const Card: React.FC<CardProps> = ({
             <Text style={styles.priceDay}>/ por dia</Text>
           </View>
         )}
-      </View>
+      </View> */}
     </ImageBackground>
   );
 };

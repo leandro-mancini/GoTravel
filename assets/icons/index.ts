@@ -1,3 +1,4 @@
+export { default as Airplane } from './airplane.svg';
 export { default as ArrowLeft2 } from './arrow-left-2.svg';
 export { default as ArrowRight2 } from './arrow-right-2.svg';
 export { default as BookmarkFilled } from './bookmark-filled.svg';
