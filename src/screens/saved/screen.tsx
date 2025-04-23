@@ -24,7 +24,7 @@ export const SavedScreen = () => {
             />
             <View style={styles.infoPage}>
                 <Heading>Salvos</Heading>
-                <BodyText>Resultado encontrado (7)</BodyText>
+                <BodyText>Resultado encontrado (9)</BodyText>
             </View>
             <TabBar
                 style={{ paddingHorizontal: 8 }}

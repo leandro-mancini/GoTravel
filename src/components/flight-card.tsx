@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Icon } from "./icon";
 import { useTheme } from "@emotion/react";
 
@@ -10,6 +10,7 @@ interface FlightCardProps {
     duration: string;
     price: string;
     status?: string;
+    bookmarked?: boolean;
 }
   
 export const FlightCard: React.FC<FlightCardProps> = ({
@@ -19,7 +20,8 @@ export const FlightCard: React.FC<FlightCardProps> = ({
     to,
     duration,
     price,
-    status = '100% no prazo',
+    status = '100% no horário',
+    bookmarked
 }) => {
     const theme = useTheme();
     const styles = createStyles(theme);
@@ -54,7 +56,11 @@ export const FlightCard: React.FC<FlightCardProps> = ({
           </Text>
   
           <View style={styles.saveBtn}>
-            <Icon name="Bookmark" size={12} color={theme.colors.text.primary[100]} />
+            {bookmarked ? (
+              <Icon name="BookmarkFilled" size={12} color={theme.colors.secondary[100]} />
+            ) : (
+              <Icon name="Bookmark" size={12} color={theme.colors.text.primary[100]} />
+            )}
           </View>
         </View>
       </View>

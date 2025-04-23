@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { useRef, useState } from "react";
-import { Animated, Dimensions, FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { ActivityIndicator, Animated, Dimensions, FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 import Ripple from "react-native-material-ripple";
 import { AnimatedFadeView } from "../animations";
 
@@ -19,6 +19,7 @@ interface TabBarProps {
 
 export const TabBar: React.FC<TabBarProps> = ({ screens, style }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   const indicator = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef<FlatList>(null);
   const theme = useTheme();
@@ -42,6 +43,14 @@ export const TabBar: React.FC<TabBarProps> = ({ screens, style }) => {
     const progress = offsetX / SCREEN_WIDTH;
     indicator.setValue(progress);
     setActiveIndex(Math.round(progress));
+
+    if (!isScrolling) {
+      setIsScrolling(true);
+    }
+  };
+
+  const handleMomentumScrollEnd = () => {
+    setIsScrolling(false);
   };
 
   const renderTabBar = () => {
@@ -79,10 +88,17 @@ export const TabBar: React.FC<TabBarProps> = ({ screens, style }) => {
         keyExtractor={(item) => item.key}
         showsHorizontalScrollIndicator={false}
         onScroll={handleScroll}
+        onMomentumScrollEnd={handleMomentumScrollEnd}
         scrollEventThrottle={16}
         renderItem={({ item }) => (
           <View style={{ width: SCREEN_WIDTH, paddingTop: 30 }}>
-            {screens[activeIndex]?.component}
+            {isScrolling ? (
+              <View style={styles.loading}>
+                <ActivityIndicator size="large" color={theme.colors.secondary[100]} />
+              </View>
+            ) : (
+              screens[activeIndex]?.component
+            )}
           </View>
         )}
       />
@@ -119,6 +135,12 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
     left: "50%",
     transform: [{ translateX: -5 }],
     marginHorizontal: 16
-  }
+  },
+  loading: {
+    flex: 1,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
