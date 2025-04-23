@@ -25,6 +25,7 @@
     "react-native": "0.79.0",
     "react-native-fbsdk-next": "^13.4.1",
     "react-native-gesture-handler": "^2.25.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-material-ripple": "^0.9.1",
     "react-native-reanimated": "^3.17.3",

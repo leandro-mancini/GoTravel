@@ -1,6 +1,7 @@
 import { FlatList } from "react-native";
 import { Card } from "../../components";
 import Ripple from "react-native-material-ripple";
+import { AnimatedFadeView } from "../../animations";
 
 export const PackagesView = () => {
     return (
@@ -9,6 +10,7 @@ export const PackagesView = () => {
             keyExtractor={(item) => item.id}
             contentContainerStyle={{ paddingHorizontal: 24 }}
             renderItem={({ item, index }) => (
+              <AnimatedFadeView animation="fadeInUp">
                 <Ripple
                     onPress={() => {}}
                     rippleContainerBorderRadius={30}
@@ -21,6 +23,7 @@ export const PackagesView = () => {
                         variant="default"
                     />
                 </Ripple>
+              </AnimatedFadeView>
             )}
         />
     );

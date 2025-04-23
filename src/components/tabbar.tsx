@@ -22,7 +22,7 @@ export const TabBar: React.FC<TabBarProps> = ({ screens, style }) => {
   const indicator = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef<FlatList>(null);
   const theme = useTheme();
-    const styles = createStyles(theme);
+  const styles = createStyles(theme);
 
   const handleTabPress = (index: number) => {
     flatListRef.current?.scrollToIndex({ index, animated: true });
@@ -82,7 +82,7 @@ export const TabBar: React.FC<TabBarProps> = ({ screens, style }) => {
         scrollEventThrottle={16}
         renderItem={({ item }) => (
           <View style={{ width: SCREEN_WIDTH, paddingTop: 30 }}>
-            {item.component}
+            {screens[activeIndex]?.component}
           </View>
         )}
       />
