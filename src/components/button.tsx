@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react'
 import { Text } from 'react-native'
 import styled from '@emotion/native'
 import Ripple from "react-native-material-ripple";
-import { colors } from '../theme/colors';
 
 type ButtonProps = {
   label: string

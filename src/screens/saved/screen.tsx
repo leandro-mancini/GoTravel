@@ -6,8 +6,6 @@ import { PackagesView } from "./packages";
 import { FightsView } from "./flights";
 import { HotelsView } from "./hotels";
 
-const TABS = ['Packages', 'Flights', 'Hotels'];
-
 export const SavedScreen = () => {
     const theme = useTheme();
     const styles = createStyles(theme);

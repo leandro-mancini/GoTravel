@@ -10,6 +10,7 @@ export { default as Google } from './google.svg';
 export { default as HomeFilled } from './home-filled.svg';
 export { default as Home } from './home.svg';
 export { default as Logo } from './logo.svg';
+export { default as Location } from './location.svg';
 export { default as Search } from './search.svg';
 export { default as SettingFilled } from './setting-filled.svg';
 export { default as Setting } from './setting.svg';

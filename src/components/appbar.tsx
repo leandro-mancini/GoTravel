@@ -8,11 +8,12 @@ import { appbarRecipe } from "../theme";
 interface AppBarProps {
     title?: string;
     canGoBack?: boolean;
+    leftActions?: React.ReactNode;
     rightActions?: React.ReactNode;
     style?: StyleProp<ViewStyle>;
   }
   
-  export const AppBar: React.FC<AppBarProps> = ({ title, canGoBack = false, rightActions, style }) => {
+  export const AppBar: React.FC<AppBarProps> = ({ title, canGoBack = false,leftActions, rightActions, style }) => {
     const navigation = useNavigation();
     const theme = useTheme();
     const styles = appbarRecipe(theme);
@@ -27,7 +28,7 @@ interface AppBarProps {
                         <Icon name="ArrowLeft2" size={16} color={theme.colors.text.primary[100]} />
                     </IconButton>
                 ) : (
-                    <View style={{ width: 40 }} />
+                    <View style={styles.left}>{leftActions}</View>
                 )}
                 <Text style={[styles.title, { color: theme.colors.text.primary[100], fontFamily: theme.typography.fontFamily.medium }]}>
                     {title}

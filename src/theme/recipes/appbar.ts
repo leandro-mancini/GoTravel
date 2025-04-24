@@ -20,6 +20,9 @@ export const appbarRecipe = (theme: ReturnType<typeof useTheme>) => StyleSheet.c
         textAlign: "center",
         fontFamily: theme.typography.fontFamily.medium
     },
+    left: {
+        alignItems: 'flex-start',
+    },
     right: {
         alignItems: 'flex-end',
     },
