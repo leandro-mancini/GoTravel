@@ -65,65 +65,46 @@ export const Card: React.FC<CardProps> = ({
       onLoadEnd={() => setIsImageLoaded(true)}
     >
       {/* Skeleton overlay */}
-        {!isImageLoaded && (
-          <Animated.View
-            style={[
-              StyleSheet.absoluteFillObject,
-              {
-                backgroundColor,
-              },
-            ]}
+      {!isImageLoaded && (
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFillObject,
+            {
+              backgroundColor,
+            },
+          ]}
+        />
+      )}
+
+      {/* Resto do conteúdo */}
+      {isImageLoaded && (
+        <>
+          <LinearGradient
+            colors={['transparent', 'rgba(0,0,0,0.8)']}
+            style={styles.gradient}
           />
-        )}
-
-        {/* Resto do conteúdo */}
-        {isImageLoaded && (
-          <>
-            <LinearGradient
-              colors={['transparent', 'rgba(0,0,0,0.8)']}
-              style={styles.gradient}
-            />
-            <View style={styles.saveButton}>
-              <Icon name="Bookmark" size={12} color={theme.colors.text.primary[100]} />
-            </View>
-
-            <View style={styles.content}>
-              {variant !== 'price' && (
-                <Rating value={rating} size={10} />
-              )}
-              <Text style={styles.title}>{title}</Text>
-
-              {(isPrice || isSquare) && price && (
-                <View style={{ gap: 4, flexDirection: "row" }}>
-                  <Text style={styles.price}>{price}</Text>
-                  <Text style={styles.priceDay}>/ por dia</Text>
-                </View>
-              )}
-            </View>
-          </>
-        )}
-      {/* <LinearGradient
-        colors={['transparent', 'rgba(0,0,0,0.8)']}
-        style={styles.gradient}
-      />
-      <View style={styles.saveButton}>
-        <Icon name="Bookmark" size={12} color={theme.colors.text.primary[100]} />
-      </View>
-
-      <View style={styles.content}>
-        {variant !== 'price' && (
-          <Rating value={rating} size={10} />
-        )}
-
-        <Text style={styles.title}>{title}</Text>
-
-        {(isPrice || isSquare) && price && (
-          <View style={{ gap: 4, flexDirection: "row" }}>
-            <Text style={styles.price}>{price}</Text>
-            <Text style={styles.priceDay}>/ por dia</Text>
+          <View style={styles.saveButton}>
+            <Icon name="Bookmark" size={12} color={theme.colors.text.primary[100]} />
           </View>
-        )}
-      </View> */}
+
+          <View style={styles.content}>
+            {variant !== 'price' && (
+              <Rating value={rating} size={10} />
+            )}
+            <Text style={styles.title}>{title}</Text>
+            {isSquare && (
+              <Text style={styles.subtitle}>{subtitle}</Text>
+            )}
+
+            {(isPrice || isSquare) && price && (
+              <View style={{ gap: 4, flexDirection: "row" }}>
+                <Text style={styles.price}>{price}</Text>
+                <Text style={styles.priceDay}>/ por dia</Text>
+              </View>
+            )}
+          </View>
+        </>
+      )}
     </ImageBackground>
   );
 };
@@ -170,6 +151,12 @@ const createStyles = (theme: ReturnType<typeof useTheme>) => StyleSheet.create({
     lineHeight: 24,
     fontFamily: theme.typography.fontFamily.medium
   },
+  subtitle: {
+    color: "#FFF",
+    fontSize: 22,
+    lineHeight: 16,
+    fontFamily: theme.typography.fontFamily.medium
+  },
   price: {
     color: '#fff',
     fontSize: 16,
@@ -194,7 +181,7 @@ const variantStyles: Record<CardVariant, any> = {
     width: '100%',
   },
   square: {
-    height: 180,
-    width: 160,
+    height: 210,
+    width: 180,
   },
 };

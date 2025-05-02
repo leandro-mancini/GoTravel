@@ -40,9 +40,9 @@ export const Categories = ({ items, selected, onSelect }: CategoriesProps) => {
                       {item.name}
                     </Text>
                   </Ripple>
-                  <AnimatedFadeView animation="fadeIn" style={[styles.indicator, isSelected && styles.selectedindicator]}>
-                        <View />
-                    </AnimatedFadeView>
+                  <View style={[styles.indicator, isSelected && styles.selectedindicator]}>
+                      <View />
+                  </View>
                 </View>
               );
             }}
