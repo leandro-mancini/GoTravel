@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Card, SliderPager, TextButton } from "../../components";
 import { useTheme } from "@emotion/react";
 import Ripple from "react-native-material-ripple";
@@ -25,12 +24,6 @@ const DATA = [
   },
 ];
 
-// const pages = [
-//     { id: "1", text: "Converse com o médico de forma mais confortável", description: "Agende uma consulta com o médico. Converse com o médico por meio da carta de agendamento e obtenha uma consulta." },
-//     { id: "2", text: "Consultas online \nfáceis e rápidas ", description: "Agende sua consulta médica de forma rápida e fácil, sem precisar enfrentar longas filas." },
-//     { id: "3", text: "Receba recomendações personalizadas de saúde", description: "Obtenha dicas de saúde e orientações personalizadas de especialistas para melhorar seu bem-estar." },
-// ];
-
 export const Popular = () => {
     const theme = useTheme();
     const styles = createStyles(theme);
@@ -44,7 +37,7 @@ export const Popular = () => {
 
         <SliderPager total={3} onFinish={() => {}}>
             {DATA.map((item) => (
-                <View style={{ paddingHorizontal: 24 }}>
+                <View key={item.id} style={{ paddingHorizontal: 24 }}>
                     <Ripple
                         onPress={() => {}}
                         rippleContainerBorderRadius={30}

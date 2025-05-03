@@ -1,10 +1,8 @@
-import { Dimensions, FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ripple from "react-native-material-ripple";
-import { Card, MiniCard, TextButton } from "../../components";
+import { MiniCard, TextButton } from "../../components";
 import { useTheme } from "@emotion/react";
-
-const { width } = Dimensions.get("window");
 
 const DATA = [
     {
